@@ -5,7 +5,7 @@ function showTime(){
     var s = date.getSeconds(); // 0 - 59
     var session = "AM";
     
-    if( m == 45 || m == 15)
+    if((m == 45 || m == 15) && s == 0)
     {
         document.body.style.backgroundColor = "pink";
         tick.play();
