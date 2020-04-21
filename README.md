@@ -1,4 +1,4 @@
 MSNOTI
 
 
-[github page](yukinyaa.github.io/MSNOTI)
+[github page](http://yukinyaa.github.io/MSNOTI)
