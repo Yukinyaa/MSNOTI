@@ -5,15 +5,34 @@ function showTime(){
     var s = date.getSeconds(); // 0 - 59
     var session = "AM";
     
-    if( (m > 29 && m < 30) || (m > 59) )
+    if( m == 45 || m == 15)
     {
+        document.body.style.backgroundColor = "pink";
+        tick.play();
+    }
+    else if( (m == 29 || m == 59) && s > 30 )
+    {
+        cp == false;
         if(s % 2 == 0)
-           document.body.style.backgroundColor = "pink";
+        {
+            tick.play();
+            document.body.style.backgroundColor = "pink";
+        }
         else
-            document.body.style.backgroundColor = "black";
+        {
+           document.body.style.backgroundColor = "white";
+        }
+         
+    }
+    else if(m == 30 && m == 60 )
+    {
+        if(cp == false)
+            alert.play();
+        cp == true;
+        document.body.style.backgroundColor = "red";
     }
     else
-            document.body.style.backgroundColor = "black";
+            document.body.style.backgroundColor = "white";
     
     if(h == 0){
         h = 12;
@@ -34,5 +53,9 @@ function showTime(){
     
     setTimeout(showTime, 1000);
 }
+var cp = false;
+var ccp = false;
+var alert = new Audio('alert.mp3');
+var tick = new Audio('tick.mp3');
 
 showTime();
