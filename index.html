@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
+  <script>
+    function hideme(ele) {
+      ele.style.display = 'none';
+    }
+  </script>
   <meta charset="UTF-8">
   <title>메이플 정삼 타이머 by바람마음설냥@스카니아</title>
   <meta charset="UTF-8">
@@ -11,8 +16,12 @@
 
 </head>
 <body>
-  <div class="info">정각, 30분 30초 전부터 깜빡이면서 띡띡거리다가 정각에 알림 울림, 15분마다 화면 빨개지면서 띡소리 나옴</div>
-  <div class="info">chrome://flags/#autoplay-policy = no user gesture is required 로 설정해야 소리 나옴</div>
+  <div id="hideme" onclick="hideme(this);">
+    <h2 class="info">메이플 정삼 타이머 by바람마음설냥@스카니아</div>
+    <div class="info">정각, 30분 30초 전부터 깜빡이면서 띡띡거리다가 정각에 알림 울림, 15분마다 화면 빨개지면서 띡소리 나옴</div>
+    <div class="info">안나오면 chrome://flags/#autoplay-policy = no user gesture is required 로 설정하면 소리 나옴</div>
+    <div class="info">클릭해서 정보 숨기기</div>
+  </div>
   
   <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
   <script  src="./script.js"></script>
