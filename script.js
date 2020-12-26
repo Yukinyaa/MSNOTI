@@ -66,19 +66,19 @@ Notification.requestPermission(function (result) {
 
 
 class FlagAlerter{
-    constructor(timeDelay, toggleBtn, tittle, msg)
+    constructor(timeBefore, toggleBtn, tittle, msg)
     {
         this.timeBefore = timeBefore;
         this.toggleBtn = toggleBtn;
         this.tittle = tittle;
         this.msg = msg;
-        this.isEnabled =  window.localStorage.getItem("flagAlertEnabled" + timeDelay);
+        this.isEnabled =  window.localStorage.getItem("flagAlertEnabled" + timeBefore);
         if (this.isEnabled == null)
             this.isEnabled = false;
         toggleBtn.checked = this.isEnabled;
         toggleBtn.setAttribute("onchange", function() {
             this.isEnabled = toggleBtn.checked;
-            window.localStorage.setItem("flagAlertEnabled" + timeDelay, this.isEnabled);
+            window.localStorage.setItem("flagAlertEnabled" + timeBefore, this.isEnabled);
         });
         this.isTrigged = false;
     }
