@@ -1,4 +1,26 @@
 
+function toBoolean(str) {
+    if(str === null)
+        return null;
+    if(typeof str === 'boolean')
+        return str;
+    if (typeof str === 'undefined') {
+        return false;
+    } else if (typeof str === 'string') {           
+        switch (str.toLowerCase()) {
+        case 'false':
+        case 'no':
+        case '0':
+        case "":
+            return false;
+        default:
+            return true;
+        }
+    } else if (typeof str === 'number') {
+        return str !== 0
+    }
+    else {return true;}
+}
 
 class FlagAlerter{
     constructor(timeBefore, toggleBtn, tittle, msg)
@@ -7,10 +29,11 @@ class FlagAlerter{
         this.toggleBtn = toggleBtn;
         this.tittle = tittle;
         this.msg = msg;
-        this.isEnabled =  window.localStorage.getItem("flagAlertEnabled" + this.timeBefore);
+        this.isEnabled = toBoolean(window.localStorage.getItem("flagAlertEnabled" + this.timeBefore));
         if (this.isEnabled == null)
             this.isEnabled = false;
         toggleBtn.checked = this.isEnabled;
+
 
         this.isTrigged = false;
     }
@@ -37,19 +60,13 @@ class FlagAlerter{
             return;
         if(this.timeBefore == 0)
         {
-            if(h == 12 || h == 19 || h== 21)
-            {
-                //trigger alarm.
-            }
+            if(h == 12 || h == 19 || h== 21);// trigger alarm.
             else return;
         }
         else// if (timeBefore > 0)
         {
             if(h == 11 || h == 18 || h== 20)
-                if(60-this.timeBefore <= m)
-                {
-                    //trigger alarm
-                }
+                if(60-this.timeBefore == m);// trigger alarm
             else return;
         }
         this.isTrigged = true;
