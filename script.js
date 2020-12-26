@@ -53,7 +53,7 @@ class FlagAlerter{
             else return;
         }
         this.isTrigged = true;
-        new Notification(this.tittle, {body:this.msg});
+        var notification = new Notification(this.tittle, {body:this.msg});
         setTimeout(function(){
                 notification.close();
             }, 3000);
