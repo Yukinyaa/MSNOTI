@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>메이플 정삼 타이머 by바람마음설냥</title>
+  <title>메이플 정삼 타이머 by바람마음설냥@레드</title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   <script>
@@ -16,7 +16,7 @@
   </script>
 
 <link rel="stylesheet" href="./style.css">
-
+<script src="./script.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Aldrich'>
@@ -26,31 +26,30 @@
 
 </head>
 
-<body>
+<body onload="showTime()">
   <div class="hideTransition" onclick="hideme(this);">
-    <h2 class="info">메이플 정삼 타이머 by바람마음설냥<sub>@<del>스카니아</del>레드</sub></h2>
+    <h2 class="info">메이플 정삼 타이머 by바람마음설냥<sub>@레드<del>스카니아</del><span style="color:#222">리프왜했지</span></sub></h2>
     <div class="info">정각, 30분 30초 전부터 깜빡이면서 띡띡거리다가 정각에 알림 울림, 15분마다 화면 빨개지면서 띡소리 나옴</div>
-    ...아무데나 클릭해서 정보 숨기기
+    <div color = "grey">...아무데나 클릭해서 정보 숨기기</div>
   </div>
   
-  <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-    <div>
-      <div>플래그 알림</div>
-      <div>
-        5분전<label class="switch"><input type="checkbox" class="5min"><span class="slider"></span></label>
+  <div id="MyClockDisplay" class="clock"></div>
+    <div class="flag">
+      <div class="flagTab">
+        <div>플래그 알림</div>
+        <div>
+          5분전<label class="switch"><input type="checkbox" class="5min"><span class="slider"></span></label>
+        </div>
+        <div>
+          3분전<label class="switch"><input type="checkbox" class="3min"><span class="slider"></span></label>
+        </div>
+        <div>
+          1분전<label class="switch"><input type="checkbox" class="1min"><span class="slider"></span></label>
+        </div>
+        <div>
+          정각<label class="switch"><input type="checkbox" class="0min"><span class="slider"></span></label>
+        </div>
       </div>
-      <div>
-        3분전<label class="switch"><input type="checkbox" class="3min"><span class="slider"></span></label>
-      </div>
-      <div>
-        1분전<label class="switch"><input type="checkbox" class="1min"><span class="slider"></span></label>
-      </div>
-      <div>
-        정각<label class="switch"><input type="checkbox" class="0min"><span class="slider"></span></label>
-      </div>
-        
-    </div>
-
-  <script src="./script.js"></script>
+  </div>
 </body>
 </html>

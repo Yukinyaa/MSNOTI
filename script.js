@@ -150,7 +150,3 @@ Notification.requestPermission(function (result) {
             return false;
         }
 });
-
-
-
-showTime();
