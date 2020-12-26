@@ -76,7 +76,7 @@ class FlagAlerter{
         if (this.isEnabled == null)
             this.isEnabled = false;
         toggleBtn.checked = this.isEnabled;
-        toggleBtn.setAttribute("onchange", function() {
+        toggleBtn.setAttribute("change", function() {
             this.isEnabled = toggleBtn.checked;
             window.localStorage.setItem("flagAlertEnabled" + timeBefore, this.isEnabled);
         });
@@ -95,7 +95,7 @@ class FlagAlerter{
             this.isTrigged = false;
         if(this.isTrigged == true)
             return;
-        if(timeDelay == 0)
+        if(timeBefore == 0)
         {
             if(h == 12 || h == 19 || h== 21)
             {
@@ -103,9 +103,9 @@ class FlagAlerter{
             }
             else return;
         }
-        else// if (timeDelay > 0)
+        else// if (timeBefore > 0)
         {
-            if(60-timeDelay>=this.timeDelay)
+            if(60-timeBefore>=this.timeBefore)
             {
                 //trigger alarm
             }
@@ -118,10 +118,10 @@ class FlagAlerter{
             }, 3000);
     }
 }
-new FlagAlerter(5,  document.getElementsByClassName("5min"), "플래그 5분전", "플래그 레이스 5분 전입니다. 메이플은 켜져있나요?");
-new FlagAlerter(3,  document.getElementsByClassName("3min"), "플래그 3분전", "플래그 레이스 3분 전입니다. 메이플은 켜져있나요?");
-new FlagAlerter(1,  document.getElementsByClassName("1min"), "플래그 1분전", "플래그 레이스 1분 전입니다. 캐릭터 바꿔주세요");
-new FlagAlerter(0,  document.getElementsByClassName("0min"), "플래그 레이스", "플래그 레이스 시작합니다.");
+new FlagAlerter(5,  document.getElementsByClassName("5min")[0], "플래그 5분전", "플래그 레이스 5분 전입니다. 메이플은 켜져있나요?");
+new FlagAlerter(3,  document.getElementsByClassName("3min")[0], "플래그 3분전", "플래그 레이스 3분 전입니다. 메이플은 켜져있나요?");
+new FlagAlerter(1,  document.getElementsByClassName("1min")[0], "플래그 1분전", "플래그 레이스 1분 전입니다. 캐릭터 바꿔주세요");
+new FlagAlerter(0,  document.getElementsByClassName("0min")[0], "플래그 레이스", "플래그 레이스 시작합니다.");
 
 
 showTime();
