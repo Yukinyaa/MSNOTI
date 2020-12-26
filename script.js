@@ -57,5 +57,71 @@ var cp = false;
 var ccp = false;
 var alert = new Audio('alert.mp3');
 var tick = new Audio('tick.mp3');
+Notification.requestPermission(function (result) {
+        if(result == 'denied') {
+            alert('알림이 차단되어 있습니다.\n브라우저의 사이트 설정에서 변경하실 수 있습니다.');
+            return false;
+        }
+});
+
+
+class FlagAlerter{
+    constructor(timeDelay, toggleBtn, tittle, msg)
+    {
+        this.timeBefore = timeBefore;
+        this.toggleBtn = toggleBtn;
+        this.tittle = tittle;
+        this.msg = msg;
+        this.isEnabled =  window.localStorage.getItem("flagAlertEnabled" + timeDelay);
+        if (this.isEnabled == null)
+            this.isEnabled = false;
+        toggleBtn.checked = this.isEnabled;
+        toggleBtn.setAttribute("onchange", function() {
+            this.isEnabled = toggleBtn.checked;
+            window.localStorage.setItem("flagAlertEnabled" + timeDelay, this.isEnabled);
+        });
+        this.isTrigged = false;
+    }
+    //"12/19/21시" 플래그
+    tick()
+    {
+        if(isEnabled == false)
+            return;
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+
+        if(m > 1 && m < 10)
+            this.isTrigged = false;
+        if(this.isTrigged == true)
+            return;
+        if(timeDelay == 0)
+        {
+            if(h == 12 || h == 19 || h== 21)
+            {
+                //trigger alarm.
+            }
+            else return;
+        }
+        else// if (timeDelay > 0)
+        {
+            if(60-timeDelay>=this.timeDelay)
+            {
+                //trigger alarm
+            }
+            else return;
+        }
+        isTrigged = true;
+        new Notification(tittle, {body:msg});
+        setTimeout(function(){
+                notification.close();
+            }, 3000);
+    }
+}
+new FlagAlerter(5,  document.getElementsByClassName("5min"), "플래그 5분전", "플래그 레이스 5분 전입니다. 메이플은 켜져있나요?");
+new FlagAlerter(3,  document.getElementsByClassName("3min"), "플래그 3분전", "플래그 레이스 3분 전입니다. 메이플은 켜져있나요?");
+new FlagAlerter(1,  document.getElementsByClassName("1min"), "플래그 1분전", "플래그 레이스 1분 전입니다. 캐릭터 바꿔주세요");
+new FlagAlerter(0,  document.getElementsByClassName("0min"), "플래그 레이스", "플래그 레이스 시작합니다.");
+
 
 showTime();
