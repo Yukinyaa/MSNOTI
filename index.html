@@ -12,21 +12,23 @@
       //ele.style.display = 'none';
       ele.classList.add('disappear');
     }
+    function toggle(a)
+    {
+
+
+    }
 
   </script>
 
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Aldrich'>
-
-
-
+  <script src="./script.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Aldrich'>
 
 </head>
 
-<body onload="showTime()">
+<body>
   <div class="hideTransition" onclick="hideme(this);">
     <h2 class="info">메이플 정삼 타이머 by바람마음설냥<sub>@레드<del>스카니아</del><span style="color:#222">리프왜했지</span></sub></h2>
     <div class="info">정각, 30분 30초 전부터 깜빡이면서 띡띡거리다가 정각에 알림 울림, 15분마다 화면 빨개지면서 띡소리 나옴</div>
@@ -34,22 +36,27 @@
   </div>
   
   <div id="MyClockDisplay" class="clock"></div>
-    <div class="flag">
-      <div class="flagTab">
-        <div>플래그 알림</div>
-        <div>
-          5분전<label class="switch"><input type="checkbox" class="5min"><span class="slider"></span></label>
-        </div>
-        <div>
-          3분전<label class="switch"><input type="checkbox" class="3min"><span class="slider"></span></label>
-        </div>
-        <div>
-          1분전<label class="switch"><input type="checkbox" class="1min"><span class="slider"></span></label>
-        </div>
-        <div>
-          정각<label class="switch"><input type="checkbox" class="0min"><span class="slider"></span></label>
-        </div>
+
+  <div class="flag">
+    <div id="flagTab">
+      <div>플래그 알림<br/></div>
+      <div>
+        5분전<label class="switch"><input type="checkbox" class="5min"><span class="slider"></span></label>
       </div>
+      <div>
+        3분전<label class="switch"><input type="checkbox" class="3min"><span class="slider"></span></label>
+      </div>
+      <div>
+        1분전<label class="switch"><input type="checkbox" class="1min"><span class="slider"></span></label>
+      </div>
+      <div>
+        정각<label class="switch"><input type="checkbox" class="0min"><span class="slider"></span></label>
+      </div>
+    </div>
+    <div class="toggleFlagTab" onclick="document.getElementById('MyClockDisplay').classList.add('dissapear')">
   </div>
+  <script>
+    showTime();
+  </script>
 </body>
 </html>
