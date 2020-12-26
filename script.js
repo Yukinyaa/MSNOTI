@@ -4,7 +4,7 @@ function showTime(){
     var m = date.getMinutes(); // 0 - 59
     var s = date.getSeconds(); // 0 - 59
     var session = "AM";
-    
+    var isDarkMode
     if((m == 45 || m == 15) && s == 0)
     {
         document.body.style.backgroundColor = "pink";
@@ -20,7 +20,7 @@ function showTime(){
         }
         else
         {
-           document.body.style.backgroundColor = "white";
+           document.body.style.backgroundColor = "#121212";
         }
          
     }
@@ -32,7 +32,7 @@ function showTime(){
         document.body.style.backgroundColor = "red";
     }
     else
-            document.body.style.backgroundColor = "white";
+        document.body.style.backgroundColor = "#121212";
     
     if(h == 0){
         h = 12;
@@ -51,7 +51,7 @@ function showTime(){
     document.getElementById("MyClockDisplay").innerText = time;
     document.getElementById("MyClockDisplay").textContent = time;
     
-    setTimeout(showTime, 1000);
+    setTimeout(showTime, 500);
 }
 var cp = false;
 var ccp = false;
