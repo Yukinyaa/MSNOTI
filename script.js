@@ -27,7 +27,7 @@ function showTime(){
     else if(m == 30 && m == 60 )
     {
         if(cp == false)
-            alert.play();
+            alertSound.play();
         cp == true;
         document.body.style.backgroundColor = "red";
     }
@@ -55,11 +55,11 @@ function showTime(){
 }
 var cp = false;
 var ccp = false;
-var alert = new Audio('alert.mp3');
+var alertSound = new Audio('alert.mp3');
 var tick = new Audio('tick.mp3');
 Notification.requestPermission(function (result) {
         if(result == 'denied') {
-            alert('알림이 차단되어 있습니다.\n브라우저의 사이트 설정에서 변경하실 수 있습니다.');
+            alert('알림이 차단되어 있습니다.\n플래그 알림이 작동하지 않습니다.\n브라우저의 사이트 설정에서 변경하실 수 있습니다.');
             return false;
         }
 });
