@@ -46,7 +46,7 @@ class FlagAlerter{
         else// if (timeBefore > 0)
         {
             if(h == 11 || h == 18 || h== 20)
-                if(60-this.timeBefore>=this.timeBefore)
+                if(60-this.timeBefore <= m)
                 {
                     //trigger alarm
                 }
