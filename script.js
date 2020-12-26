@@ -1,3 +1,68 @@
+
+
+class FlagAlerter{
+    constructor(timeBefore, toggleBtn, tittle, msg)
+    {
+        this.timeBefore = timeBefore;
+        this.toggleBtn = toggleBtn;
+        this.tittle = tittle;
+        this.msg = msg;
+        this.isEnabled =  window.localStorage.getItem("flagAlertEnabled" + timeBefore);
+        if (this.isEnabled == null)
+            this.isEnabled = false;
+        toggleBtn.checked = this.isEnabled;
+
+        this.isTrigged = false;
+    }
+
+    //"12/19/21시" 플래그
+    tick()
+    {
+        if(this.toggleBtn.checked != this.isEnabled)
+        {
+            this.toggleBtn.checked = this.isEnabled;
+            this.isEnabled =  window.localStorage.setItem("flagAlertEnabled" + timeBefore, toggleBtn.checked);
+        }
+
+        
+        if(this.isEnabled == false)
+            return;
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+
+        if(m > 1 && m < 10)
+            this.isTrigged = false;
+        if(this.isTrigged == true)
+            return;
+        if(timeBefore == 0)
+        {
+            if(h == 12 || h == 19 || h== 21)
+            {
+                //trigger alarm.
+            }
+            else return;
+        }
+        else// if (timeBefore > 0)
+        {
+            if(h == 11 || h == 18 || h== 20)
+                if(60-timeBefore>=this.timeBefore)
+                {
+                    //trigger alarm
+                }
+            else return;
+        }
+        isTrigged = true;
+        new Notification(tittle, {body:msg});
+        setTimeout(function(){
+                notification.close();
+            }, 3000);
+    }
+}
+var a5 = new FlagAlerter(5,  document.getElementsByClassName("5min")[0], "플래그 5분전", "플래그 레이스 5분 전입니다. 메이플은 켜져있나요?");
+var a3 = new FlagAlerter(3,  document.getElementsByClassName("3min")[0], "플래그 3분전", "플래그 레이스 3분 전입니다. 메이플은 켜져있나요?");
+var a1 = new FlagAlerter(1,  document.getElementsByClassName("1min")[0], "플래그 1분전", "플래그 레이스 1분 전입니다. 캐릭터 바꿔주세요");
+var a0 = new FlagAlerter(0,  document.getElementsByClassName("0min")[0], "플래그 레이스", "플래그 레이스 시작합니다.");
 function showTime(){
     var date = new Date();
     var h = date.getHours(); // 0 - 23
@@ -50,8 +115,13 @@ function showTime(){
     var time = h + ":" + m + ":" + s + " " + session;
     document.getElementById("MyClockDisplay").innerText = time;
     document.getElementById("MyClockDisplay").textContent = time;
-    
+    a5.tick();    
+    a3.tick();
+    a1.tick();
+    a0.tick();
+
     setTimeout(showTime, 500);
+
 }
 var cp = false;
 var ccp = false;
@@ -64,68 +134,6 @@ Notification.requestPermission(function (result) {
         }
 });
 
-
-class FlagAlerter{
-    constructor(timeBefore, toggleBtn, tittle, msg)
-    {
-        this.timeBefore = timeBefore;
-        this.toggleBtn = toggleBtn;
-        this.tittle = tittle;
-        this.msg = msg;
-        this.isEnabled =  window.localStorage.getItem("flagAlertEnabled" + timeBefore);
-        if (this.isEnabled == null)
-            this.isEnabled = false;
-        toggleBtn.checked = this.isEnabled;
-        toggleBtn.setAttribute("change", changed);
-
-        this.isTrigged = false;
-    }
-    changed(){
-        this.isEnabled = toggleBtn.checked;
-        window.localStorage.setItem("flagAlertEnabled" + timeBefore, this.isEnabled);
-    }
-
-    //"12/19/21시" 플래그
-    tick()
-    {
-        if(isEnabled == false)
-            return;
-        var date = new Date();
-        var h = date.getHours(); // 0 - 23
-        var m = date.getMinutes(); // 0 - 59
-
-        if(m > 1 && m < 10)
-            this.isTrigged = false;
-        if(this.isTrigged == true)
-            return;
-        if(timeBefore == 0)
-        {
-            if(h == 12 || h == 19 || h== 21)
-            {
-                //trigger alarm.
-            }
-            else return;
-        }
-        else// if (timeBefore > 0)
-        {
-            if(h == 11 || h == 18 || h== 20)
-                if(60-timeBefore>=this.timeBefore)
-                {
-                    //trigger alarm
-                }
-            else return;
-        }
-        isTrigged = true;
-        new Notification(tittle, {body:msg});
-        setTimeout(function(){
-                notification.close();
-            }, 3000);
-    }
-}
-new FlagAlerter(5,  document.getElementsByClassName("5min")[0], "플래그 5분전", "플래그 레이스 5분 전입니다. 메이플은 켜져있나요?");
-new FlagAlerter(3,  document.getElementsByClassName("3min")[0], "플래그 3분전", "플래그 레이스 3분 전입니다. 메이플은 켜져있나요?");
-new FlagAlerter(1,  document.getElementsByClassName("1min")[0], "플래그 1분전", "플래그 레이스 1분 전입니다. 캐릭터 바꿔주세요");
-new FlagAlerter(0,  document.getElementsByClassName("0min")[0], "플래그 레이스", "플래그 레이스 시작합니다.");
 
 
 showTime();
