@@ -76,12 +76,15 @@ class FlagAlerter{
         if (this.isEnabled == null)
             this.isEnabled = false;
         toggleBtn.checked = this.isEnabled;
-        toggleBtn.setAttribute("change", function() {
-            this.isEnabled = toggleBtn.checked;
-            window.localStorage.setItem("flagAlertEnabled" + timeBefore, this.isEnabled);
-        });
+        toggleBtn.setAttribute("change", changed);
+
         this.isTrigged = false;
     }
+    changed(){
+        this.isEnabled = toggleBtn.checked;
+        window.localStorage.setItem("flagAlertEnabled" + timeBefore, this.isEnabled);
+    }
+
     //"12/19/21시" 플래그
     tick()
     {
@@ -105,10 +108,11 @@ class FlagAlerter{
         }
         else// if (timeBefore > 0)
         {
-            if(60-timeBefore>=this.timeBefore)
-            {
-                //trigger alarm
-            }
+            if(h == 11 || h == 18 || h== 20)
+                if(60-timeBefore>=this.timeBefore)
+                {
+                    //trigger alarm
+                }
             else return;
         }
         isTrigged = true;
