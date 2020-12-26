@@ -54,19 +54,18 @@ class FlagAlerter{
         var h = date.getHours(); // 0 - 23
         var m = date.getMinutes(); // 0 - 59
 
-        if(m > 1 && m < 10)
+        if(m == 1)
             this.isTrigged = false;
         if(this.isTrigged == true)
             return;
         if(this.timeBefore == 0)
         {
-            if(h == 12 || h == 19 || h== 21);// trigger alarm.
+            if((h == 12 || h == 19 || h== 21)&&(m==0)){}// trigger alarm.
             else return;
         }
-        else// if (timeBefore > 0)
+        else// if timeBefore > 0
         {
-            if(h == 11 || h == 18 || h== 20)
-                if(60-this.timeBefore == m);// trigger alarm
+            if(h == 11 || h == 18 || h== 20 && (60-this.timeBefore == m)){}// trigger alarm
             else return;
         }
         this.isTrigged = true;
